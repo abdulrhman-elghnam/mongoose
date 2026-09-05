@@ -14,7 +14,7 @@ app.use(
 
 app.use('/user', userController);
 app.use('/note', noteController);
-app.get('/', (req, res) => sendSuccess(res, 'hello from backend 🚀', undefined));
+app.get('/', (req, res) => sendSuccess({res, message: 'hello from backend 🚀'}));
 app.all('/{*nothing}', (req, res, next) => next(createError(404, 'route is not exist')));
 
 app.use(globalErrorHandler);
