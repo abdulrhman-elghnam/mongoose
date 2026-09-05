@@ -6,7 +6,7 @@ import createError from 'http-errors';
 import express from 'express';
 import morgan from 'morgan';
 
-export const app = express();
+const app = express();
 
 app.use(
   express.json(),
@@ -20,3 +20,5 @@ app.get('/', (req, res) => sendSuccess(res, 'hello from backend 🚀', undefined
 app.all('/{*nothing}', (req, res, next) => next(createError(404, 'route is not exist')));
 
 app.use(globalErrorHandler);
+
+export default app;
