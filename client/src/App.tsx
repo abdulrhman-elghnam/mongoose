@@ -93,9 +93,12 @@ export function App() {
 
   useEffect(() => {
     if (!userId) {
+      localStorage.removeItem(STORAGE_KEY)
       setNotes([])
       return
     }
+
+    localStorage.setItem(STORAGE_KEY, userId)
     loadNotes(userId)
   }, [userId])
 

@@ -20,6 +20,11 @@ noteController.post('/', async (req, res) => {
   return sendSuccess({ res, ...serviceFeedback });
 });
 
+noteController.delete('/', async (req, res) => {
+  const serviceFeedback = await deleteAllNotes(req.query.user);
+  return sendSuccess({ res, ...serviceFeedback });
+});
+
 noteController.patch('/all', async (req, res) => {
   const serviceFeedback = await updateAll(req.query.user, req.body);
   return sendSuccess({ res, ...serviceFeedback });
@@ -45,18 +50,13 @@ noteController.get('/aggregate', async (req, res) => {
   return sendSuccess({ res, ...serviceFeedback });
 });
 
-noteController.delete('/', async (req, res) => {
-  const serviceFeedback = await deleteAllNotes(req.query.user);
+noteController.put('/replace/:id', async (req, res) => {
+  const serviceFeedback = await replaceNote(req.params.id, req.query.user, req.body);
   return sendSuccess({ res, ...serviceFeedback });
 });
 
 noteController.get('/:id', async (req, res) => {
   const serviceFeedback = await getNoteById(req.params.id, req.query.user);
-  return sendSuccess({ res, ...serviceFeedback });
-});
-
-noteController.put('/replace/:id', async (req, res) => {
-  const serviceFeedback = await replaceNote(req.params.id, req.query.user, req.body);
   return sendSuccess({ res, ...serviceFeedback });
 });
 
@@ -70,7 +70,3 @@ noteController.patch('/:id', async (req, res) => {
   return sendSuccess({ res, ...serviceFeedback });
 });
 
-noteController.get('/:id', async (req, res) => {
-  const serviceFeedback = await getNoteById(req.params.id, req.query.user);
-  return sendSuccess({ res, ...serviceFeedback });
-});
