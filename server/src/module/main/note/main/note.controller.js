@@ -11,6 +11,8 @@ import {
   getNotes,
   getNoteTitleAggregate,
   deleteAllNotes,
+  //----------
+  updateNoteContent,
 } from './note.service.js';
 import { Router } from 'express';
 export const noteController = Router();
@@ -69,4 +71,8 @@ noteController.patch('/:id', async (req, res) => {
   const serviceFeedback = await updateNote(req.params.id, req.query.user, req.body);
   return sendSuccess({ res, ...serviceFeedback });
 });
-
+//-----------------------------------------------------------
+noteController.patch('/:id/replace', async (req, res) => {
+  const serviceFeedback = await updateNoteContent(req.params.id, req.query.user, req.body);
+  return sendSuccess({ res, ...serviceFeedback });
+});

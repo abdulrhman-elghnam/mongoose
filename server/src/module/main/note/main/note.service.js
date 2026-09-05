@@ -194,3 +194,20 @@ export const deleteAllNotes = async (userId) => {
     console.log({ err: error.message });
   }
 };
+
+//---------------------------------------------
+export const updateNoteContent = async (id, userId, { content }) => {
+  try {
+    const note = await NoteModel.findById(id);
+    if (!note) {
+      throw createError(404, 'note not found');
+    }
+    if (note.userId?.toString() !== userId) {
+      throw createError(403, 'you are not the owner of this note');
+    }
+    const result = await NoteModel.findByIdAndUpdate(id, { content }, { new: true });
+    return { message: 'note content updated successfully', status: 200, data: result };
+  } catch (error) {
+    throw createError(409, error);
+  }
+};
