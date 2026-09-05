@@ -1,1 +1,279 @@
-{}
+{
+    "info": {
+        "_postman_id": "4d3d0133-8d77-4472-8d3c-a03d3df1ec7d",
+        "name": "Mongoose Backend API",
+        "description": "Collection for the Express + Mongoose backend routes.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://127.0.0.1:8080",
+            "type": "string"
+        },
+        {
+            "key": "userId",
+            "value": "6a99b62e6f7c18d829ce0148",
+            "type": "string"
+        },
+        {
+            "key": "noteId",
+            "value": "6a9aefcc10329958c1d59cce",
+            "type": "string"
+        }
+    ],
+    "item": [
+        {
+            "name": "User",
+            "item": [
+                {
+                    "name": "Signup User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"abdulrhman\",\n  \"email\": \"kkkkk@gmail.com\",\n  \"phone\": \"01008261140\",\n  \"password\": \"@Aa445566\",\n  \"age\": 20\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{baseUrl}}/user/signup"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Login User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"abdulrhman@gmail.com\",\n  \"password\": \"@Aa445566\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{baseUrl}}/user/login"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get User By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{baseUrl}}/user?id={{userId}}"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete User",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "{{baseUrl}}/user?id={{userId}}"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update User",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"ahmed@gmail.com\",\n  \"age\": 21,\n  \"name\": \"mohamed\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{baseUrl}}/user/{{userId}}"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Note",
+            "item": [
+                {
+                    "name": "Create Note",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"title\": \"work\",\n  \"content\": \"work plan\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{baseUrl}}/note?id={{userId}}"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update All Notes For User",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"title\": \"node js\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{baseUrl}}/note/all?user={{userId}}"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Notes Paginated",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{baseUrl}}/note/paginate-sort?user={{userId}}&page=1&limit=5"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Notes By Content",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{baseUrl}}/note/note-by-content?content=work%20plan"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Notes With User",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{baseUrl}}/note/note-with-user?user={{userId}}"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Note Title Aggregate",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{baseUrl}}/note/aggregate?title=work"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Note By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{baseUrl}}/note/{{noteId}}?user={{userId}}"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Replace Note",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"title\": \"mohamed\",\n  \"content\": \"content of hello\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{baseUrl}}/note/replace/{{noteId}}?user={{userId}}"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Note By ID",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"title\": \"updated title\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{baseUrl}}/note/{{noteId}}?user={{userId}}"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Note By ID",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "{{baseUrl}}/note/{{noteId}}?user={{userId}}"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete All Notes For User",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "{{baseUrl}}/note?user={{userId}}"
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}
