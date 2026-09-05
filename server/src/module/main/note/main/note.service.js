@@ -135,7 +135,7 @@ export const getByContent = async (content) => {
 export const getNotes = async (userId) => {
   try {
     const notes = await NoteModel.find({ userId })
-      .select('title createdAt userId')
+      .select('title content createdAt userId')
       .populate({ path: 'userId', select: 'email -_id' });
 
     return { message: 'ok', status: 200, data: notes };
