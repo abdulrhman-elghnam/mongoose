@@ -1,4 +1,4 @@
-import { mongoose } from '#/database/index.js';
+import { mongoose } from '../../../index.js';
 
 const userSchema = new mongoose.Schema(
   {

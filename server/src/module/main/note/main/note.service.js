@@ -1,4 +1,4 @@
-import { NoteModel, UserModel } from '#/database/index.js';
+import { NoteModel, UserModel } from '../../../../database/index.js';
 import createError from 'http-errors';
 
 export const createNote = async (id, { title, content }) => {

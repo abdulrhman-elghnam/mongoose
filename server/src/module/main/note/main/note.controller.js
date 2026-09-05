@@ -1,4 +1,4 @@
-import { sendSuccess } from '#/common/main/structure/index.js';
+import { sendSuccess } from '../../../../common/main/structure/index.js';
 import {
   createNote,
   updateNote,

@@ -1,5 +1,6 @@
-import { UserModel } from '#/database/index.js';
+import { UserModel } from '../../../../database/index.js';
 import createError from 'http-errors';
+
 export const signup = async ({ name, email, password, phone, age }) => {
   try {
     const account = await UserModel.findOne({ email });
@@ -13,7 +14,6 @@ export const signup = async ({ name, email, password, phone, age }) => {
     throw createError(409, error);
   }
 };
-
 export const login = async ({ email, password }) => {
   try {
     const account = await UserModel.findOne({ email, password });
@@ -26,7 +26,6 @@ export const login = async ({ email, password }) => {
     throw createError(409, error);
   }
 };
-
 export const updateUser = async (id, { name, email, age }) => {
   try {
     const isDuplicated = await UserModel.findOne({ email });
@@ -43,7 +42,6 @@ export const updateUser = async (id, { name, email, age }) => {
     throw createError(409, error);
   }
 };
-
 export const deleteUser = async (id) => {
   try {
     const account = await UserModel.findByIdAndDelete(id);
@@ -56,7 +54,6 @@ export const deleteUser = async (id) => {
     throw createError(409, error);
   }
 };
-
 export const getUser = async (id) => {
   try {
     const account = await UserModel.findById(id);

@@ -1,5 +1,5 @@
-import app from '../src/app.bootstrap.js';
-import { databaseConnection } from '#/database/index.js';
+import { app } from '../src/app.bootstrap.js';
+import { databaseConnection } from '../src/database/index.js';
 
 let connected = false;
 

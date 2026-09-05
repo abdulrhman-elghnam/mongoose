@@ -1,4 +1,4 @@
-import { sendSuccess } from '#/common/main/structure/index.js';
+import { sendSuccess } from '../../../../common/main/structure/index.js';
 import { signup, login, updateUser, deleteUser, getUser } from '../main/user.service.js';
 import { Router } from 'express';
 export const userController = Router();
