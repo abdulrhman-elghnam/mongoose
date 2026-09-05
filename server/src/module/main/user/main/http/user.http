@@ -32,4 +32,4 @@ Content-Type: application/json
 delete  http://127.0.0.1:8080/user?id=6a9ae82fded937e1d0c00755
 
 ###
-get  http://127.0.0.1:8080/user?id=6a9ae82fded937e1d0c00755
+get  https://api-note-z.vercel.app/user?id=6a9c648c6721f097161e2446
