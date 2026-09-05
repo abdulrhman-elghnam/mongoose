@@ -72,7 +72,7 @@ noteController.patch('/:id', async (req, res) => {
   return sendSuccess({ res, ...serviceFeedback });
 });
 //-----------------------------------------------------------
-noteController.patch('/:id/replace', async (req, res) => {
+noteController.patch('/:id/content', async (req, res) => {
   const serviceFeedback = await updateNoteContent(req.params.id, req.query.user, req.body);
   return sendSuccess({ res, ...serviceFeedback });
 });

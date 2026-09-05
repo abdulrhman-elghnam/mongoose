@@ -172,7 +172,7 @@ export function App() {
 
     try {
       if (selectedNoteId) {
-        await apiRequest(`/note/${selectedNoteId}?user=${userId}`, {
+        await apiRequest(`/note/${selectedNoteId}/content?user=${userId}`, {
           method: "PATCH",
           body: JSON.stringify(noteForm),
         })
