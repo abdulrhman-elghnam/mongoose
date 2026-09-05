@@ -1,0 +1,35 @@
+###
+POST http://127.0.0.1:8080/user/signup
+Content-Type: application/json
+
+{
+    "name":"abdulrhman" ,
+    "email":"kkkkk@gmail.com" ,
+    "phone" : "01008261140",
+    "password":"@Aa445566",
+    "age" : 20
+}
+###
+POST http://127.0.0.1:8080/user/login
+Content-Type: application/json
+
+{
+    "email":"abdulrhman@gmail.com" ,
+    "password":"@Aa445566"
+}
+
+###
+PATCH  http://127.0.0.1:8080/user/6a9ae806ded937e1d0c00754
+Content-Type: application/json
+
+{
+    "email":"ahmed@gmail.com" ,
+    "age" : 21,
+    "name" : "mohamed"
+}
+
+###
+delete  http://127.0.0.1:8080/user?id=6a9ae82fded937e1d0c00755
+
+###
+get  http://127.0.0.1:8080/user?id=6a9ae82fded937e1d0c00755

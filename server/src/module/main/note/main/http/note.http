@@ -1,0 +1,37 @@
+POST http://127.0.0.1:8080/note?id=6a99b62e6f7c18d829ce0148
+Content-Type:  application/json
+
+{
+    "title":"work",
+    "content":"work plan"
+}
+
+###
+PUT http://127.0.0.1:8080/note/replace/6a9c55c194fd5bb89d265233?user=6a99b62e6f7c18d829ce0148
+Content-Type:  application/json
+
+{
+    "title":"mohamed",
+    "content":"content of hello"
+}
+
+
+###
+PATCH  http://127.0.0.1:8080/note/all?user=6a99b62e6f7c18d829ce0148
+Content-Type:  application/json
+
+{
+    "title":"node js"
+}
+###
+DELETE http://127.0.0.1:8080/note/6a9ae9423759da2fa6f8e1c0?user=6a99b62e6f7c18d829ce0148
+###
+GET  http://127.0.0.1:8080/note/paginate-sort?user=6a99b62e6f7c18d829ce0148&page=1&limit=5
+###
+GET  http://127.0.0.1:8080/note/6a9aefcc10329958c1d59cce?user=6a99b62e6f7c18d829ce0148
+###
+GET  http://127.0.0.1:8080/note/note-by-content?content=work%20plan
+###
+GET  http://127.0.0.1:8080/note/note-with-user?user=6a99b62e6f7c18d829ce0148
+###
+DELETE http://127.0.0.1:8080/note?user=6a99b62e6f7c18d829ce0148
