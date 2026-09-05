@@ -24,7 +24,7 @@ export const updateNote = async (id, userId, { title, content }) => {
     if (!note) {
       throw createError(404, 'note not found');
     }
-    if (note.userId !== userId) {
+    if (note.userId?.toString() !== userId) {
       throw createError(403, 'you are not the owner of this note');
     }
     const result = await NoteModel.findByIdAndUpdate(id, { title, content }, { new: true });
@@ -40,7 +40,7 @@ export const replaceNote = async (id, userId, { title, content }) => {
     if (!note) {
       throw createError(404, 'note not found');
     }
-    if (note.userId != userId) {
+    if (note.userId?.toString() !== userId) {
       throw createError(403, 'you are not the owner of this note');
     }
     const result = await NoteModel.findByIdAndUpdate(
@@ -71,7 +71,7 @@ export const updateAll = async (userId, { title }) => {
 export const deleteNote = async (userId, id) => {
   try {
     const note = await NoteModel.findById(id);
-    if (note && note.userId == userId) {
+    if (note && note.userId?.toString() === userId) {
       const result = await NoteModel.deleteOne({ _id: id });
       return { message: 'note deleted successfully', status: 200, data: result };
     } else {

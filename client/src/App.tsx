@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { useTheme } from "@/components/theme-provider"
 
 const API_URL = import.meta.env.VITE_API_URL ?? "https://api-note-z.vercel.app"
+const STORAGE_KEY = "note_app_user_id"
 
 type UserPayload = {
   _id?: string
@@ -66,7 +67,7 @@ export function App() {
   const [loginForm, setLoginForm] = useState(emptyLogin)
   const [noteForm, setNoteForm] = useState(emptyNote)
   const [notes, setNotes] = useState<NotePayload[]>([])
-  const [userId, setUserId] = useState<string>("")
+  const [userId, setUserId] = useState<string>(() => localStorage.getItem(STORAGE_KEY) ?? "")
   const [activeUser, setActiveUser] = useState<UserPayload | null>(null)
   const [selectedNoteId, setSelectedNoteId] = useState<string>("")
   const [error, setError] = useState("")
@@ -82,6 +83,13 @@ export function App() {
       console.error(err)
     }
   }
+
+  useEffect(() => {
+    const savedUserId = localStorage.getItem(STORAGE_KEY)
+    if (savedUserId) {
+      setUserId(savedUserId)
+    }
+  }, [])
 
   useEffect(() => {
     if (!userId) {
@@ -111,6 +119,7 @@ export function App() {
       }
 
       setUserId(nextUserId)
+      localStorage.setItem(STORAGE_KEY, nextUserId)
       setActiveUser(result.data ?? null)
       setSignupForm(emptySignup)
       setNoteForm(emptyNote)
@@ -138,6 +147,7 @@ export function App() {
       }
 
       setUserId(nextUserId)
+      localStorage.setItem(STORAGE_KEY, nextUserId)
       setActiveUser(result.data ?? null)
       setLoginForm(emptyLogin)
     } catch (err) {
@@ -201,6 +211,7 @@ export function App() {
 
   const handleLogout = () => {
     setUserId("")
+    localStorage.removeItem(STORAGE_KEY)
     setActiveUser(null)
     setNotes([])
     setSelectedNoteId("")
